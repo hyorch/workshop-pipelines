@@ -32,28 +32,7 @@ Both Jenkins and SonarQube servers are required for running the pipelines and co
         --env JENKINS_OPTS="--prefix=/jenkins" \
         jenkins/jenkins:2.164.3
 
-    docker run --name ci-sonarqube-data \
-        --detach \
-        --network ci \
-        --mount type=volume,source=ci-sonarqube-data,target=/var/lib/mysql \
-        --env MYSQL_DATABASE="sonar" \
-        --env MYSQL_USER="sonar" \
-        --env MYSQL_PASSWORD="sonarsonar" \
-        --env MYSQL_ROOT_PASSWORD="adminadmin" \
-        mysql:5.6.41
-
-    sleep 10
-
-    docker run --name ci-sonarqube \
-        --detach \
-        --network ci \
-        --publish 9000:9000 \
-        --mount type=volume,source=ci-sonarqube-extensions,target=/opt/sonarqube/extensions \
-        --mount type=volume,source=ci-sonarqube-esdata,target=/opt/sonarqube/data \
-        --env SONARQUBE_JDBC_URL="jdbc:mysql://ci-sonarqube-data:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true" \
-        --env SONARQUBE_JDBC_USERNAME="sonar" \
-        --env SONARQUBE_JDBC_PASSWORD="sonarsonar" \
-        sonarqube:6.7.6-community -Dsonar.web.context=/sonarqube
+    docker run -d  --network ci --name si-sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:latest
 
 Note that the preceding commands will set up persistent volumes so all configuration, plugins and data persists across server restarts.
 
@@ -508,7 +487,7 @@ To ensure that unsecure vulnerabilities are not carried onto a live environment,
             <plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
-                <version>5.0.0-M3</version>
+                <version>6.0.0</version>
                 <configuration>
                     <format>ALL</format>
                     <failBuildOnCVSS>5</failBuildOnCVSS>
