@@ -4,4 +4,4 @@ docker run --name ci-workshop-pipelines \
   --network ci \
   --publish 8080:8080 --publish 6300:6300 \
   --env JAVA_OPTS="-javaagent:/jacocoagent.jar=output=tcpserver,address=*,port=6300" \
-  deors/workshop-pipelines:latest
+  hyorch/workshop-pipelines:latest
