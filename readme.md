@@ -1,3 +1,9 @@
+# Forked From DEORS  
+https://github.com/deors/workshop-pipelines
+
+Modify pom.xml line 56 to label image with your DockerHub user name.
+<docker.image.prefix>hyorch</docker.image.prefix>
+
 # workshop-pipelines
 
 Workshop about CI/CD pipelines with Jenkins and Docker.
