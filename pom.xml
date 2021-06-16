@@ -19,7 +19,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.5.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/> 
     </parent>
 
     <properties>
@@ -50,7 +50,6 @@
         <compiler.version>3.8.0</compiler.version>
         <surefire.version>2.22.1</surefire.version>
         <failsafe.version>2.22.1</failsafe.version>
-        <!--<dependency.version>3.1.1</dependency.version>-->
         <dependency.version>3.1.2</dependency.version>
 
         <spotify-docker.version>1.2.0</spotify-docker.version>
@@ -71,7 +70,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <!-- exclude JUnit 4 in favour of JUnit 5 -->
+            
             <exclusions>
                 <exclusion>
                     <groupId>junit</groupId>
@@ -133,8 +132,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- copy JaCoCo dependencies to include them in the Docker image
-                 and to collect code coverage metrics during integration tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
