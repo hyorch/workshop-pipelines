@@ -51,7 +51,7 @@
         <surefire.version>2.22.1</surefire.version>
         <failsafe.version>2.22.1</failsafe.version>
         <!--<dependency.version>3.1.1</dependency.version>-->
-        <dependency.version>6.2.2</dependency.version>
+        <dependency.version>3.1.2</dependency.version>
 
         <spotify-docker.version>1.2.0</spotify-docker.version>
         <docker.image.prefix>hyorch</docker.image.prefix>
