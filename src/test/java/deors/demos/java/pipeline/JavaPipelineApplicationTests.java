@@ -11,5 +11,6 @@ public class JavaPipelineApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		System.out.println("hello");
 	}
 }
